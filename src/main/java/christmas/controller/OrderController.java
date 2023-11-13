@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import christmas.model.Order;
 import christmas.view.OrderView;
 
@@ -16,9 +17,18 @@ public class OrderController {
         view.displayWelcomeMessage();
 
         // 입력 받기
+        view.displayExpectedDateRequest();
+        model.setVisitDate(Console.readLine());
+
+        view.displayOrderRequest();
+        view.displayEventPreview(model.getVisitDate());
+
+
+
         // 모델 업데이트
         // 뷰 업데이트
     }
 
     // 다른 메서드 추가
+
 }
