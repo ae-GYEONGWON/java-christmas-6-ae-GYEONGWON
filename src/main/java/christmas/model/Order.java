@@ -7,19 +7,18 @@ public class Order {
     private int visitDate;
     private Map<String, Integer> items; // 주문한 메뉴와 수량
     private int totalAmount; // 할인 전 총 금액
-    private int discountAmount; // 총 할인 금액
     private String eventBadge; // 이벤트 배지
 
     public Order() {
-        this.items = new HashMap<>();
+        items = new HashMap<>();
     }
 
     // Constructor, getters, and setters
 
     // 주문 추가, 할인 계산 등의 메서드 추가
 
-    public void setVisitDate(String visitDate) {
-        this.visitDate = Integer.parseInt(visitDate);
+    public void setVisitDate(int date) {
+        this.visitDate = date;
     }
 
     public int getVisitDate() {
