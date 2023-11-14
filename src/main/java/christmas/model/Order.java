@@ -1,5 +1,6 @@
 package christmas.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
@@ -8,6 +9,9 @@ public class Order {
     private int totalAmount; // 할인 전 총 금액
     private int discountAmount; // 총 할인 금액
     private String eventBadge; // 이벤트 배지
+
+    public Order() {
+    }
 
     // Constructor, getters, and setters
 
@@ -22,8 +26,11 @@ public class Order {
     }
 
     public void setItems(String orderedItems) {
+        if (this.items == null) {
+            this.items = new HashMap<>();
+        }
         String[] orderedItemsList = orderedItems.split(",");
-        for ( String orderedItemString : orderedItemsList ) {
+        for (String orderedItemString : orderedItemsList) {
             String[] orderedItem = orderedItemString.split("-");
             this.items.put(orderedItem[0], Integer.parseInt((orderedItem[1])));
         }

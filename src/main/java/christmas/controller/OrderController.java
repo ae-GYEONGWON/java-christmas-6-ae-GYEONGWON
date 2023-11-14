@@ -16,11 +16,13 @@ public class OrderController {
     public void processOrder() {
         view.displayWelcomeMessage();
 
-        // 입력 받기
+        // 예상 방문 날짜 입력받기
         view.displayExpectedDateRequest();
         model.setVisitDate(Console.readLine());
 
+        // 주문 메뉴와 개수 입력받기
         view.displayOrderRequest();
+        model.setItems(Console.readLine());
         view.displayEventPreview(model.getVisitDate());
 
 
