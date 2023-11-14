@@ -11,6 +11,7 @@ public class Order {
     private String eventBadge; // 이벤트 배지
 
     public Order() {
+        this.items = new HashMap<>();
     }
 
     // Constructor, getters, and setters
@@ -26,9 +27,6 @@ public class Order {
     }
 
     public void setItems(String orderedItems) {
-        if (this.items == null) {
-            this.items = new HashMap<>();
-        }
         String[] orderedItemsList = orderedItems.split(",");
         for (String orderedItemString : orderedItemsList) {
             String[] orderedItem = orderedItemString.split("-");
@@ -37,6 +35,16 @@ public class Order {
     }
 
     public void setTotalAmount() {
+        totalAmount = 0;
+        for (Map.Entry<String, Integer> entry : items.entrySet()) {
+            String menuName = entry.getKey();
+            int quantity = entry.getValue();
+            int price = Menu.getPrice(menuName);
+            totalAmount += price * quantity;
+        }
+    }
 
+    public int getTotalAmount() {
+        return totalAmount;
     }
 }

@@ -1,10 +1,15 @@
 package christmas.model;
 
 public class Menu {
+
+    public Menu() {
+        Menu menu = new Menu();
+    }
+
     public enum Appetizer {
-        양송이수프(6000),
-        타파스(5500),
-        시저샐러드(8000);
+        MUSHROOM_SOUP(6000),
+        TAPAS(5500),
+        CAESAR_SALAD(8000);
 
         private final int price;
 
@@ -17,15 +22,15 @@ public class Menu {
         }
     }
 
-    public enum Main {
-        티본스테이크(55000),
-        바비큐립(54000),
-        해산물파스타(35000),
-        크리스마스파스타(25000);
+    public enum MainCourse {
+        T_BONE_STEAK(55000),
+        BBQ_RIBS(54000),
+        SEAFOOD_PASTA(35000),
+        CHRISTMAS_PASTA(25000);
 
         private final int price;
 
-        Main(int price) {
+        MainCourse(int price) {
             this.price = price;
         }
 
@@ -34,13 +39,13 @@ public class Menu {
         }
     }
 
-    public enum dessert {
-        초코케이크(15000),
-        아이스크림(5000);
+    public enum Dessert {
+        CHOCOLATE_CAKE(15000),
+        ICE_CREAM(5000);
 
         private final int price;
 
-        dessert(int price) {
+        Dessert(int price) {
             this.price = price;
         }
 
@@ -49,19 +54,62 @@ public class Menu {
         }
     }
 
-    public enum beverage {
-        제로콜라(3000),
-        레드와인(60000),
-        샴페인(25000);
+    public enum Beverage {
+        ZERO_COLA(3000),
+        RED_WINE(60000),
+        CHAMPAGNE(25000);
 
         private final int price;
 
-        beverage(int price) {
+        Beverage(int price) {
             this.price = price;
         }
 
         public int getPrice() {
             return this.price;
         }
+    }
+
+    public static int getPrice(String menuName) {
+        String menuCategory = Menu.findMenuCategory(menuName);
+        if (menuCategory.equals("Appetizer")) {
+            return Appetizer.valueOf(menuName).getPrice();
+        }
+        if (menuCategory.equals("MainCourse")) {
+            return MainCourse.valueOf(menuName).getPrice();
+        }
+        if (menuCategory.equals("Dessert")) {
+            return Dessert.valueOf(menuName).getPrice();
+        }
+        if (menuCategory.equals("Beverage")) {
+            return Beverage.valueOf(menuName).getPrice();
+        }
+        return -1;
+    }
+
+    private static String findMenuCategory(String menuName) {
+        if (findInEnum(Appetizer.values(), menuName)) {
+            return "Appetizer";
+        }
+        if (findInEnum(MainCourse.values(), menuName)) {
+            return "MainCourse";
+        }
+        if (findInEnum(Dessert.values(), menuName)) {
+            return "Dessert";
+        }
+        if (findInEnum(Beverage.values(), menuName)) {
+            return "Beverage";
+        }
+
+        return "Unknown Category";
+    }
+
+    private static <E extends Enum<E>> boolean findInEnum(E[] enumValues, String name) {
+        for (E e : enumValues) {
+            if (e.name().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
