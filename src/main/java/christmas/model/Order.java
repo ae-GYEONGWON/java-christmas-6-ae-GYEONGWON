@@ -36,4 +36,7 @@ public class Order {
         }
     }
 
+    public void setTotalAmount() {
+
+    }
 }
