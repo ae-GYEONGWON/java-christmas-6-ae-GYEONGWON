@@ -58,8 +58,12 @@ public class OrderController {
         int weekDiscount = discount.getWeekDiscount();
         int weekendDiscount = discount.getWeekendDiscount();
         int specialDiscount = discount.getSpecialDiscount();
+        boolean giveaway = discount.getGiveaway();
 
         int sumDiscount = christmasDiscount + weekDiscount + weekendDiscount + specialDiscount;
+        if (giveaway) {
+            sumDiscount += 25000;
+        }
         discount.setDiscountAmount(sumDiscount);
     }
 
@@ -68,5 +72,6 @@ public class OrderController {
         outputView.printTotalAmount(order.getTotalAmount());
         outputView.printGiveaway(discount.getGiveaway());
         outputView.printBenefitDetails(discount.getChristmasDiscount(), discount.getWeekDiscount(), discount.getWeekendDiscount(), discount.getSpecialDiscount(),discount.getGiveaway());
+        outputView.printDiscountAmount(discount.getDiscountAmount());
     }
 }

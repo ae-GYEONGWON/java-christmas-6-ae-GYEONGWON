@@ -65,4 +65,9 @@ public class OutputView {
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.KOREA);
         return numberFormat.format(money) + "원";
     }
+
+    public void printDiscountAmount(int money) {
+        System.out.println("<총혜택 금액>");
+        System.out.println("-" + numberFormatWithWon(money));
+    }
 }
