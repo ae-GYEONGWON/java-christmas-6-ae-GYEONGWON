@@ -16,5 +16,6 @@ public class Application {
         OrderController controller = new OrderController(model, inputView, outputView, discount);
 
         controller.processOrder();
+        controller.discountController();
     }
 }

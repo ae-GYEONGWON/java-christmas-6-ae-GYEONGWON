@@ -1,9 +1,14 @@
 package christmas.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Menu {
+    Map<String, String> menuNameMap;
 
     public Menu() {
-        Menu menu = new Menu();
+        menuNameMap = new HashMap<>();
+        setMenuNameMap();
     }
 
     public enum Appetizer {
@@ -87,7 +92,7 @@ public class Menu {
         return -1;
     }
 
-    private static String findMenuCategory(String menuName) {
+    public static String findMenuCategory(String menuName) {
         if (findInEnum(Appetizer.values(), menuName)) {
             return "Appetizer";
         }
@@ -111,5 +116,24 @@ public class Menu {
             }
         }
         return false;
+    }
+
+    private void setMenuNameMap() {
+        menuNameMap.put("양송이스프", "MUSHROOM_SOUP");
+        menuNameMap.put("타파스", "TAPAS");
+        menuNameMap.put("시저샐러드", "CAESAR_SALAD");
+        menuNameMap.put("티본스테이크", "T_BONE_STEAK");
+        menuNameMap.put("바비큐립", "BBQ_RIBS");
+        menuNameMap.put("해산물파스타", "SEAFOOD_PASTA");
+        menuNameMap.put("크리스마스파스타", "CHRISTMAS_PASTA");
+        menuNameMap.put("초코케이크", "CHOCOLATE_CAKE");
+        menuNameMap.put("아이스크림", "ICE_CREAM");
+        menuNameMap.put("제로콜라", "ZERO_COLA");
+        menuNameMap.put("레드와인", "RED_WINE");
+        menuNameMap.put("샴페인", "CHAMPAGNE");
+    }
+
+    public Map<String, String> getMenuNameMap() {
+        return menuNameMap;
     }
 }
