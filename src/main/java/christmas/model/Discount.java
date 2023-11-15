@@ -35,9 +35,6 @@ public class Discount {
     /*
     평일 할인(일요일~목요일): 평일에는 디저트 메뉴를 메뉴 1개당 2,023원 할인
 주말 할인(금요일, 토요일): 주말에는 메인 메뉴를 메뉴 1개당 2,023원 할인
-특별 할인: 이벤트 달력에 별이 있으면 총주문 금액에서 1,000원 할인
-증정 이벤트: 할인 전 총주문 금액이 12만 원 이상일 때, 샴페인 1개 증정
-이벤트 기간: '크리스마스 디데이 할인'을 제외한 다른 이벤트는 2023.12.1 ~ 2023.12.31 동안 적용
      */
     public int weekDiscount(int date, int dessertAmount) {
         if (isWeekend(date)) {
@@ -56,6 +53,17 @@ public class Discount {
     public boolean isWeekend(int date) {
         int dayOfWeek = (date - 1) % 7;
         return dayOfWeek == 0 || dayOfWeek == 1;
+    }
+    /*
+    특별 할인: 이벤트 달력에 별이 있으면 총주문 금액에서 1,000원 할인
+증정 이벤트: 할인 전 총주문 금액이 12만 원 이상일 때, 샴페인 1개 증정
+이벤트 기간: '크리스마스 디데이 할인'을 제외한 다른 이벤트는 2023.12.1 ~ 2023.12.31 동안 적용
+     */
+    public int specialDiscount(int date) {
+        if (date % 7 == 3 || date == 25) {
+            return 1000;
+        }
+        return 0;
     }
 
 }

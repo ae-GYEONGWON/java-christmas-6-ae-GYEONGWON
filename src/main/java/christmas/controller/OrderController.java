@@ -56,11 +56,8 @@ public class OrderController {
         int christmasDiscount = discount.christmasDiscount(date);
         int weekDiscount = discount.weekDiscount(date, dessertAmount);
         int weekendDiscount = discount.weekendDiscount(date, mainCourseAmount);
-        System.out.println("christmasDiscount : " + christmasDiscount);
-        System.out.println("dessertAmount : " + dessertAmount);
-        System.out.println("mainCourseAmount : " + mainCourseAmount);
-        System.out.println("weekDiscount : " + weekDiscount);
-        System.out.println("weekendDiscount : " + weekendDiscount);
+        int specialDiscount = discount.specialDiscount(date);
+        System.out.println(specialDiscount);
     }
 
 }
