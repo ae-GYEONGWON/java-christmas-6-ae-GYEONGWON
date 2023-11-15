@@ -37,8 +37,7 @@ public class OrderController {
         String Requestedorder = inputView.readOrder();
         order.setItems(Requestedorder);
 
-        outputView.displayEventPreview(date);
-        System.out.println("크리스마스 디데이 할인!!! : " + discount.christmasDiscount(date));
+        outputView.displayBenefitPreview(date);
 
         order.setTotalAmount(order.getItems());
     }
@@ -49,10 +48,16 @@ public class OrderController {
         int dessertAmount = categoryMap.getOrDefault("Dessert", 0);
         int mainCourseAmount = categoryMap.getOrDefault("MainCourse", 0);
 
-        int christmasDiscount = discount.christmasDiscount(date);
-        int weekDiscount = discount.weekDiscount(date, dessertAmount);
-        int weekendDiscount = discount.weekendDiscount(date, mainCourseAmount);
-        int specialDiscount = discount.specialDiscount(date);
+        discount.christmasDiscount(date);
+        discount.weekDiscount(date, dessertAmount);
+        discount.weekendDiscount(date, mainCourseAmount);
+        discount.specialDiscount(date);
+        discount.giveawayPromotion(order.getTotalAmount());
+
+        int christmasDiscount = discount.getChristmasDiscount();
+        int weekDiscount = discount.getWeekDiscount();
+        int weekendDiscount = discount.getWeekendDiscount();
+        int specialDiscount = discount.getSpecialDiscount();
 
         int sumDiscount = christmasDiscount + weekDiscount + weekendDiscount + specialDiscount;
         discount.setDiscountAmount(sumDiscount);
@@ -61,7 +66,7 @@ public class OrderController {
     public void printresult() {
         outputView.printMenu(order.getItems());
         outputView.printTotalAmount(order.getTotalAmount());
-        outputView.printGiveaway(discount.giveawayPromotion(order.getTotalAmount()));
-
+        outputView.printGiveaway(discount.getGiveaway());
+        outputView.printBenefitDetails(discount.getChristmasDiscount(), discount.getWeekDiscount(), discount.getWeekendDiscount(), discount.getSpecialDiscount(),discount.getGiveaway());
     }
 }
