@@ -29,12 +29,12 @@ public class OrderController {
 
     public void processOrder() {
         outputView.displayWelcomeMessage();
-        int date;
+        String dateString;
         // 예상 방문 날짜 입력받기
         do {
-            date = inputView.readDate();
-        } while (!validator.dateValidate(date));
-        order.setVisitDate(date);
+            dateString = inputView.readDate();
+        } while (!validator.dateValidate(dateString));
+        order.setVisitDate(Integer.parseInt(dateString));
 
         // 주문 메뉴와 model개수 입력받기
         String Requestedorder = inputView.readOrder();
