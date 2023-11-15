@@ -51,7 +51,7 @@ public class Order {
             Map<String, String> menuNameMap = menu.getMenuNameMap();
             String menuName = menuNameMap.get(menuNameKorean);
             int quantity = entry.getValue();
-            int price = Menu.getPrice(menuNameKorean);
+            int price = Menu.getPrice(menuName);
             totalAmount += price * quantity;
             String menuCategory = Menu.findMenuCategory(menuName);
             int currentQuantity = category.getOrDefault(menuCategory, 0);

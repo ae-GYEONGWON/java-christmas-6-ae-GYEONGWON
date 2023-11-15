@@ -41,23 +41,26 @@ public class OrderController {
         System.out.println("크리스마스 디데이 할인!!! : " + discount.christmasDiscount(date));
 
         order.setTotalAmount(order.getItems());
-//        System.out.println(order.getItems());
-
-
-        // 모델 업데이트
-        // 뷰 업데이트
     }
 
-    public void discountController() {
+    public void discountCalculator() {
         int date = order.getVisitDate();
         Map<String, Integer> categoryMap = order.getCategory();
         int dessertAmount = categoryMap.getOrDefault("Dessert", 0);
         int mainCourseAmount = categoryMap.getOrDefault("MainCourse", 0);
+
         int christmasDiscount = discount.christmasDiscount(date);
         int weekDiscount = discount.weekDiscount(date, dessertAmount);
         int weekendDiscount = discount.weekendDiscount(date, mainCourseAmount);
         int specialDiscount = discount.specialDiscount(date);
-        System.out.println(specialDiscount);
+        boolean giveaway = discount.giveawayPromotion(order.getTotalAmount());
+
+        int sumDiscount = christmasDiscount + weekDiscount + weekendDiscount + specialDiscount;
+        discount.setDiscountAmount(sumDiscount);
     }
 
+    public void printresult() {
+        outputView.printMenu(order.getItems());
+        outputView.printTotalAmount(order.getTotalAmount());
+    }
 }
