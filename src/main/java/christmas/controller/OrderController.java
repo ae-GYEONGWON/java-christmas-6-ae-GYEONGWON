@@ -36,9 +36,6 @@ public class OrderController {
         // 주문 메뉴와 model개수 입력받기
         String Requestedorder = inputView.readOrder();
         order.setItems(Requestedorder);
-
-        outputView.displayBenefitPreview(date);
-
         order.setTotalAmount(order.getItems());
     }
 
@@ -69,6 +66,7 @@ public class OrderController {
     }
 
     public void printresult() {
+        outputView.displayBenefitPreview(order.getVisitDate());
         outputView.printMenu(order.getItems());
         outputView.printTotalAmount(order.getTotalAmount());
         outputView.printGiveaway(discount.getGiveaway());
