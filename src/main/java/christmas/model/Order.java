@@ -1,5 +1,7 @@
 package christmas.model;
 
+import christmas.controller.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ public class Order {
     private int totalAmount; // 할인 전 총 금액
     private Map<String, Integer> category;
     private String eventBadge; // 이벤트 배지
+    Validator validator = new Validator();
 
     public Order() {
         items = new HashMap<>();

@@ -36,8 +36,11 @@ public class OrderController {
         } while (!validator.dateValidate(dateString));
         order.setVisitDate(Integer.parseInt(dateString));
 
+        String Requestedorder;
         // 주문 메뉴와 model개수 입력받기
-        String Requestedorder = inputView.readOrder();
+        do {
+            Requestedorder = inputView.readOrder();
+        } while (!validator.orderValidate(Requestedorder));
         order.setItems(Requestedorder);
         order.setTotalAmount(order.getItems());
     }
