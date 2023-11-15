@@ -12,6 +12,7 @@ public class OrderController {
     private OutputView outputView;
     private InputView inputView;
     private Discount discount;
+    Validator validator = new Validator();
 
     public OrderController(
             Order order,
@@ -28,9 +29,11 @@ public class OrderController {
 
     public void processOrder() {
         outputView.displayWelcomeMessage();
-
+        int date;
         // 예상 방문 날짜 입력받기
-        int date = inputView.readDate();
+        do {
+            date = inputView.readDate();
+        } while (!validator.dateValidate(date));
         order.setVisitDate(date);
 
         // 주문 메뉴와 model개수 입력받기
