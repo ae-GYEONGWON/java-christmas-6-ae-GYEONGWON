@@ -112,15 +112,15 @@ public class Discount {
     1만 원 이상: 트리
     2만 원 이상: 산타
      */
-    public String getBadge() {
-        if (discountAmount >= 5000) {
-            return "별";
+    public String getBadge(int money) {
+        if (money >= 20000) {
+            return "산타";
         }
-        if (discountAmount >= 10000) {
+        if (money >= 10000) {
             return "트리";
         }
-        if (discountAmount >= 20000) {
-            return "산타";
+        if (money >= 5000) {
+            return "별";
         }
         return "없음";
     }

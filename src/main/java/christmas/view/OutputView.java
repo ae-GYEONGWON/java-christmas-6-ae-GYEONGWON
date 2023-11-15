@@ -45,16 +45,16 @@ public class OutputView {
             System.out.println("없음");
         }
         if (christmasDiscount != 0) {
-            System.out.println("크리스마스 디데이 할인: " + "-" + numberFormatWithWon(christmasDiscount));
+            System.out.println("크리스마스 디데이 할인: " + numberFormatWithWon(-christmasDiscount));
         }
         if (weekDiscount != 0) {
-            System.out.println("평일 할인: " + "-" + numberFormatWithWon(weekDiscount));
+            System.out.println("평일 할인: " + numberFormatWithWon(-weekDiscount));
         }
         if (weekendDiscount != 0) {
-            System.out.println("주말 할인: " + "-" + numberFormatWithWon(weekendDiscount));
+            System.out.println("주말 할인: " + numberFormatWithWon(-weekendDiscount));
         }
         if (specialDiscount != 0) {
-            System.out.println("특별 할인: " + "-" + numberFormatWithWon(specialDiscount));
+            System.out.println("특별 할인: " + numberFormatWithWon(-specialDiscount));
         }
         if (giveaway) {
             System.out.println("증정 이벤트: -25,000원");
@@ -68,7 +68,7 @@ public class OutputView {
 
     public void printDiscountAmount(int money) {
         System.out.println("<총혜택 금액>");
-        System.out.println("-" + numberFormatWithWon(money));
+        System.out.println(numberFormatWithWon(-money));
     }
     public void printExpectedPrice(int money) {
         System.out.println("<할인 후 예상 결제 금액>");

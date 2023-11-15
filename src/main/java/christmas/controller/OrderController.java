@@ -75,5 +75,6 @@ public class OrderController {
         outputView.printBenefitDetails(discount.getChristmasDiscount(), discount.getWeekDiscount(), discount.getWeekendDiscount(), discount.getSpecialDiscount(),discount.getGiveaway());
         outputView.printDiscountAmount(discount.getDiscountAmount());
         outputView.printExpectedPrice(order.getTotalAmount()-discount.getRealdiscountAmount());
+        outputView.printBadge(discount.getBadge(discount.getDiscountAmount()));
     }
 }
