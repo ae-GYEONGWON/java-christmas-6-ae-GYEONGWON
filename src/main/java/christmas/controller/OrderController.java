@@ -53,7 +53,6 @@ public class OrderController {
         int weekDiscount = discount.weekDiscount(date, dessertAmount);
         int weekendDiscount = discount.weekendDiscount(date, mainCourseAmount);
         int specialDiscount = discount.specialDiscount(date);
-        boolean giveaway = discount.giveawayPromotion(order.getTotalAmount());
 
         int sumDiscount = christmasDiscount + weekDiscount + weekendDiscount + specialDiscount;
         discount.setDiscountAmount(sumDiscount);
@@ -62,5 +61,7 @@ public class OrderController {
     public void printresult() {
         outputView.printMenu(order.getItems());
         outputView.printTotalAmount(order.getTotalAmount());
+        outputView.printGiveaway(discount.giveawayPromotion(order.getTotalAmount()));
+
     }
 }

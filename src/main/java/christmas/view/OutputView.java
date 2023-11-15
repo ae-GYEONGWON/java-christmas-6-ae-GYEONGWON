@@ -26,4 +26,13 @@ public class OutputView {
         String formattedValue = numberFormat.format(totalAmount) + "원";
         System.out.println(formattedValue);
     }
+    public void printGiveaway(boolean giveaway) {
+        System.out.println("<증정 메뉴>");
+        if (giveaway) {
+            System.out.println("샴페인 1개");
+        }
+        if (!giveaway) {
+            System.out.println("없음");
+        }
+    }
 }
